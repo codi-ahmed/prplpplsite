@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#05070e">
+<title>PRPL PPL — Return to the Real</title>
+<meta name="description" content="PRPL PPL — Return to the Real.">
+<style>
+:root{
+  --bg:#05070e;
+  --fg:#f4f1ff;
+  --muted:rgba(244,241,255,.68);
+  --soft:rgba(244,241,255,.45);
+  --line:rgba(255,255,255,.17);
+  --violet:#ceabff;
+  --violet-2:#985ee2;
+  --cyan:#9beaff;
+  --max:1380px;
+  --ease:cubic-bezier(.22,.72,.16,1);
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.is-ready .loading{opacity:0;pointer-events:none}
+a,button{font:inherit;color:inherit}
+a{text-decoration:none}
+button{background:none;border:0;padding:0;cursor:pointer}
+.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
+
+/* Fixed cinematic video stage */
+.video-stage{position:fixed;inset:0;z-index:0;overflow:hidden;background:#03050b}
+.video-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:saturate(.88) contrast(1.06) brightness(.9);transform:scale(1.012);will-change:transform}
+.video-stage::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(2,4,12,.36) 0%,rgba(2,4,12,.12) 35%,rgba(2,4,12,.22) 68%,rgba(2,4,12,.6) 100%);pointer-events:none}
+.video-stage::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 50% 45%,transparent 0 35%,rgba(0,0,0,.35) 100%);pointer-events:none}
+
+/* Texture */
+.grain{position:fixed;inset:-45%;z-index:30;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");animation:grain .16s steps(2) infinite}
+@keyframes grain{0%{transform:translate3d(0,0,0)}25%{transform:translate3d(1%,-1%,0)}50%{transform:translate3d(-1%,1%,0)}75%{transform:translate3d(1%,1%,0)}100%{transform:translate3d(-1%,-1%,0)}}
+
+.loading{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#05070e;transition:opacity .6s ease}
+.loading-inner{text-align:center}
+.loading-mark{font-size:15px;letter-spacing:.5em;margin-left:.5em}
+.loading-bar{width:160px;height:1px;margin:20px auto 0;background:rgba(255,255,255,.12);overflow:hidden}
+.loading-bar span{display:block;width:50%;height:100%;background:var(--violet);box-shadow:0 0 14px var(--violet);animation:load 1.2s ease-in-out infinite}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}}
+
+/* Navigation */
+.nav{position:fixed;top:0;left:0;right:0;height:82px;z-index:20;padding:0 clamp(18px,3.2vw,52px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;mix-blend-mode:screen}
+.brand{font-size:14px;letter-spacing:.42em;white-space:nowrap}
+.nav-links{display:flex;gap:clamp(18px,2.5vw,38px);justify-content:center;font:9px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.nav-links a{opacity:.62;transition:opacity .3s ease,transform .3s ease}
+.nav-links a:hover,.nav-links a.is-active{opacity:1;transform:translateY(-1px)}
+.signal{justify-self:end;display:flex;align-items:center;gap:8px;font:8px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.14em;opacity:.72}
+.dot{width:6px;height:6px;border-radius:50%;background:#dfc5ff;box-shadow:0 0 16px #dfc5ff;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+
+/* UI chrome */
+.side-ui{position:fixed;z-index:18;right:24px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:10px;font:8px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.13em;color:rgba(255,255,255,.65)}
+.progress{width:1px;height:120px;background:rgba(255,255,255,.17);position:relative}
+.progress span{position:absolute;left:0;top:0;width:1px;height:0;background:var(--violet);box-shadow:0 0 10px var(--violet)}
+.scroll-label{writing-mode:vertical-rl;transform:rotate(180deg);opacity:.55}
+
+.scroll-space{position:relative;z-index:4}
+.scene{position:relative;min-height:200vh}
+.scene-inner{width:min(var(--max),90vw);height:100vh;position:sticky;top:0;margin:0 auto;display:flex;align-items:center}
+.scene-copy{max-width:730px;position:relative;text-shadow:0 2px 22px rgba(0,0,0,.48)}
+.kicker{font:9px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.2em;color:rgba(224,204,255,.88);margin-bottom:23px}
+.title{margin:0;font-size:clamp(44px,5.8vw,90px);line-height:1.08;font-weight:350;letter-spacing:.105em;text-transform:uppercase}
+.title.small{font-size:clamp(32px,4.6vw,66px);letter-spacing:.13em}
+.body{margin:0;max-width:550px;color:var(--muted);font-size:13px;line-height:1.95;letter-spacing:.035em}
+.body em{font-family:Georgia,"Times New Roman",serif;font-size:15px;letter-spacing:.08em;color:rgba(244,241,255,.74)}
+.eyebrow{margin:0;color:rgba(255,255,255,.75);font:10px/1.85 "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+.cta{display:inline-flex;align-items:center;gap:13px;margin-top:34px;font:9px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:#dfc5ff;transition:transform .3s var(--ease),color .3s ease}
+.cta:hover{transform:translateX(5px);color:#fff}
+.arrow{width:28px;height:28px;border:1px solid rgba(255,255,255,.34);border-radius:50%;display:grid;place-items:center;font-size:12px}
+
+/* Word/line text animation */
+.animate-line,.animate-word{display:block;opacity:0;transform:translate3d(0,36px,0);filter:blur(7px);will-change:transform,opacity,filter;text-shadow:0 2px 18px rgba(0,0,0,.62)}
+.inline-line{display:block}
+
+.hero .scene-inner{align-items:center;padding-top:4vh}
+.hero .scene-copy{padding-left:0}
+.hero .body{margin-top:30px}
+.hero .cta{margin-top:39px}
+
+.split .scene-inner{justify-content:space-between;gap:8vw}
+.split .scene-copy.right{padding-top:14vh;max-width:420px}
+
+.section-side{width:270px;flex:0 0 270px}
+.side-index{font:9px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.17em;color:rgba(255,255,255,.6);margin-bottom:13px}
+.split-wide .scene-inner{align-items:center}
+.split-wide .scene-copy{max-width:450px}
+.split-wide .visual-note{margin-left:auto;max-width:340px}
+
+.archive .scene-inner{align-items:center;justify-content:space-between}
+.archive-card{width:min(370px,30vw);padding:30px;border:1px solid var(--line);background:rgba(4,7,15,.25);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.archive-card h3{margin:4px 0 30px;font-size:15px;font-weight:400;letter-spacing:.18em}
+.meta{color:rgba(255,255,255,.61);font:9px/2.15 "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.11em}
+.archive-card .cta{margin-top:27px}
+
+.access .scene-inner{display:grid;grid-template-columns:260px 1fr;gap:5vw;align-content:center}
+.access-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.access-card{min-height:340px;padding:28px 20px 24px;border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(4,7,15,.12),rgba(4,7,15,.24));transition:background .4s ease,transform .4s var(--ease)}
+.access-card:last-child{border-right:0}
+.access-card:hover{background:rgba(159,109,255,.08);transform:translateY(-5px)}
+.access-icon{height:58px;display:grid;place-items:center;color:#dcc1ff;font-size:29px;text-shadow:0 0 18px rgba(210,170,255,.45)}
+.access-card h3{margin:23px 0 13px;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase}
+.access-card p{min-height:91px;margin:0;color:var(--muted);font-size:10px;line-height:1.75;letter-spacing:.02em}
+.access-card a{font:8px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:#d9c0ff}
+
+.manifesto .scene-inner{display:grid;grid-template-columns:.85fr 1.15fr;gap:8vw}
+.manifesto h2{margin:0;font-size:clamp(38px,5vw,70px);line-height:1.2;font-weight:350;letter-spacing:.16em;text-transform:uppercase}
+.manifesto .body{max-width:630px}
+.manifesto .body + .body{margin-top:25px}
+
+.closing .scene-inner{justify-content:space-between;align-items:flex-end;padding-bottom:13vh}
+.closing-copy{max-width:460px}
+.closing-actions{width:min(300px,30vw);display:flex;flex-direction:column;gap:14px}
+.closing-actions a{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border:1px solid rgba(255,255,255,.3);background:rgba(6,8,15,.2);font:9px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.13em;text-transform:uppercase;transition:transform .3s var(--ease),background .3s ease,border-color .3s ease}
+.closing-actions a:hover{transform:translateX(5px);background:rgba(255,255,255,.06)}
+.closing-actions a.primary{border-color:#a563dc;background:linear-gradient(90deg,#8750bd,#a15ed6)}
+
+footer{position:relative;z-index:5;min-height:26vh;display:flex;justify-content:space-between;align-items:flex-start;padding:48px clamp(18px,3.2vw,52px);border-top:1px solid var(--line);background:#050a12}
+footer .brand{margin-bottom:10px}
+footer p{margin:0;color:var(--muted);font:11px Georgia,"Times New Roman",serif;letter-spacing:.06em;font-style:italic}
+.foot-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:18px 26px;max-width:700px;color:rgba(255,255,255,.55);font:8px "SFMono-Regular",Consolas,"Liberation Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+
+@media (max-width:900px){
+  .nav{grid-template-columns:1fr auto;height:68px}
+  .nav-links{display:none}
+  .signal{font-size:7px}
+  .scene{min-height:205vh}
+  .scene-inner{width:86vw}
+  .title{font-size:clamp(34px,9vw,58px);letter-spacing:.09em}
+  .title.small{font-size:clamp(30px,8vw,50px)}
+  .body{font-size:12px;line-height:1.85}
+  .body em{font-size:14px}
+  .side-ui{right:11px}
+  .scroll-label{display:none}
+  .split .scene-inner,.manifesto .scene-inner{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:45px}
+  .split .scene-copy.right{padding-top:0;max-width:520px}
+  .section-side{width:auto;flex:auto}
+  .archive .scene-inner{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:36px}
+  .archive-card{width:100%;max-width:480px}
+  .access .scene-inner{display:flex;flex-direction:column;justify-content:center;gap:30px}
+  .access-grid{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .access-card{min-height:250px;padding:25px 18px}
+  .access-card:nth-child(2n){border-right:0}
+  .access-card:nth-child(n+3){border-top:1px solid var(--line)}
+  .closing .scene-inner{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding-bottom:10vh;gap:42px}
+  .closing-actions{width:100%;max-width:440px}
+  footer{display:block}
+  .foot-links{justify-content:flex-start;margin-top:30px}
+}
+@media (max-width:520px){
+  .brand{font-size:11px;letter-spacing:.35em}
+  .signal span{display:none}
+  .scene{min-height:220vh}
+  .kicker{font-size:8px;margin-bottom:18px}
+  .hero .body{margin-top:24px}
+  .hero .cta{margin-top:30px}
+  .archive-card{padding:24px}
+  .access-card{min-height:240px}
+  .access-card p{min-height:78px}
+  .closing-actions a{padding:17px 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .grain,.dot,.loading-bar span{animation:none}
+  .animate-line,.animate-word{opacity:1!important;transform:none!important;filter:none!important}
+}
+</style>
+</head>
+<body>
+<div class="loading" aria-hidden="true"><div class="loading-inner"><div class="loading-mark">PRPL PPL</div><div class="loading-bar"><span></span></div></div></div>
+
+<div class="video-stage" aria-hidden="true">
+  <video id="bgVideo" muted playsinline webkit-playsinline preload="auto" poster="assets/poster.jpg">
+    <source src="assets/background.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#elsewhere" aria-label="PRPL PPL home">PRPL PPL</a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="#elsewhere" data-nav="elsewhere">Codex: 000</a>
+    <a href="#archive" data-nav="archive">Archive</a>
+    <a href="#observatory" data-nav="observatory">Observatory</a>
+    <a href="#oracle" data-nav="oracle">Oracle</a>
+    <a href="#portal" data-nav="portal">Portal</a>
+  </nav>
+  <div class="signal"><span>SIGNAL DETECTED</span><i class="dot" aria-hidden="true"></i></div>
+</header>
+
+<aside class="side-ui" aria-hidden="true"><div class="scroll-label">SCROLL</div><div class="progress"><span id="progressBar"></span></div></aside>
+
+<main class="scroll-space">
+  <section class="scene hero" id="elsewhere" data-scene="01">
+    <div class="scene-inner">
+      <div class="scene-copy">
+        <div class="kicker animate-line">01 — ELSEWHERE</div>
+        <h1 class="title">
+          <span class="animate-line">YOU WERE NEVER LOST.</span>
+          <span class="animate-line">YOU WERE LOOKING FOR</span>
+          <span class="animate-line">THE WRONG WORLD.</span>
+        </h1>
+        <p class="body animate-line" data-delay="2"><span class="inline-line">The signal was always there.</span><span class="inline-line">Some hear it. Few follow it.</span></p>
+        <a class="cta animate-line" data-delay="3" href="#signal">ENTER ELSEWHERE <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene split" id="signal" data-scene="02">
+    <div class="scene-inner">
+      <div class="scene-copy">
+        <div class="kicker animate-line">02 — THE SIGNAL</div>
+        <h2 class="title small"><span class="animate-line">HAS BEEN</span><span class="animate-line">FOUND.</span></h2>
+      </div>
+      <div class="scene-copy right">
+        <p class="eyebrow">
+          <span class="animate-line">Fragments of another</span>
+          <span class="animate-line">origin have begun</span>
+          <span class="animate-line">to surface.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene split-wide" id="observatory" data-scene="03">
+    <div class="scene-inner">
+      <div class="section-side">
+        <div class="side-index animate-line">03</div>
+        <div class="kicker animate-line">APPROACH<br>THE SANCTUM</div>
+        <p class="body">
+          <span class="animate-line">At the edge of Elsewhere</span>
+          <span class="animate-line">a recovery site was built.</span>
+          <span class="animate-line">Not to create.</span>
+          <span class="animate-line">To uncover.</span>
+        </p>
+      </div>
+      <div class="visual-note">
+        <p class="eyebrow">
+          <span class="animate-line">FOLLOW THE LIGHT.</span>
+          <span class="animate-line">THE PATH REVEALS ITSELF</span>
+          <span class="animate-line">ONLY WHILE YOU MOVE.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene archive" id="archive" data-scene="04">
+    <div class="scene-inner">
+      <div class="section-side">
+        <div class="side-index animate-line">04</div>
+        <div class="kicker animate-line">ENTER<br>THE SANCTUM</div>
+        <p class="body">
+          <span class="animate-line">Everything here</span>
+          <span class="animate-line">was recovered.</span>
+          <span class="animate-line">Nothing here was</span>
+          <span class="animate-line">made for everyone.</span>
+        </p>
+        <a class="cta animate-line" href="#access">VIEW ARCHIVE: 001 <span class="arrow">→</span></a>
+      </div>
+      <article class="archive-card">
+        <div class="kicker animate-line">ARCHIVE: 001</div>
+        <h3 class="animate-line">THE OUTLIER</h3>
+        <div class="meta">
+          <span class="animate-line">DESIGNATOR: THE OUTLIER</span>
+          <span class="animate-line">STATUS: RECOVERED</span>
+          <span class="animate-line">ORIGIN: UNKNOWN</span>
+        </div>
+        <a class="cta animate-line" href="#access">ENTER ARCHIVE <span class="arrow">→</span></a>
+      </article>
+    </div>
+  </section>
+
+  <section class="scene access" id="access" data-scene="05">
+    <div class="scene-inner">
+      <div class="section-side">
+        <div class="side-index animate-line">05</div>
+        <div class="kicker animate-line">THE FIVE<br>ACCESS POINTS</div>
+        <p class="body">
+          <span class="animate-line">Five ways into</span>
+          <span class="animate-line">the system.</span>
+          <span class="animate-line">Five dimensions</span>
+          <span class="animate-line">of the signal.</span>
+        </p>
+      </div>
+      <div class="access-grid">
+        <article class="access-card">
+          <div class="access-icon animate-line">⌘</div><h3 class="animate-line">CODEX: 000</h3>
+          <p><span class="animate-line">The first record.</span><span class="animate-line">The origin file.</span><span class="animate-line">Why PRPL PPL exists.</span></p><a href="#elsewhere">ENTER CODEX ＋</a>
+        </article>
+        <article class="access-card">
+          <div class="access-icon animate-line">◈</div><h3 class="animate-line">ARCHIVE</h3>
+          <p><span class="animate-line">Recovered objects.</span><span class="animate-line">Fragments bearing</span><span class="animate-line">trace memory.</span></p><a href="#archive">ENTER ARCHIVE ＋</a>
+        </article>
+        <article class="access-card">
+          <div class="access-icon animate-line">◎</div><h3 class="animate-line">OBSERVATORY</h3>
+          <p><span class="animate-line">Field notes.</span><span class="animate-line">Transmissions.</span><span class="animate-line">Watch closely.</span></p><a href="#observatory">ENTER OBSERVATORY ＋</a>
+        </article>
+        <article class="access-card">
+          <div class="access-icon animate-line">◇</div><h3 class="animate-line">ORACLE</h3>
+          <p><span class="animate-line">Ask. Listen.</span><span class="animate-line">Receive.</span><span class="animate-line">The system responds.</span></p><a href="#oracle">CONSULT ORACLE ＋</a>
+        </article>
+        <article class="access-card">
+          <div class="access-icon animate-line">✦</div><h3 class="animate-line">PORTAL</h3>
+          <p><span class="animate-line">Access is earned</span><span class="animate-line">through resonance.</span><span class="animate-line">The threshold connects us.</span></p><a href="#portal">REQUEST ACCESS ＋</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene manifesto" id="oracle" data-scene="07">
+    <div class="scene-inner">
+      <div>
+        <h2><span class="animate-line">ONLY THE</span><span class="animate-line">REAL REMAIN.</span></h2>
+      </div>
+      <div>
+        <p class="body">
+          <span class="animate-line">PRPL PPL is for the ones who have always felt slightly</span>
+          <span class="animate-line">misaligned with the ordinary world. The outliers. The</span>
+          <span class="animate-line">signal-bearers. The ones who remember before they can explain.</span>
+        </p>
+        <p class="body">
+          <span class="animate-line">We are not building from trend.</span>
+          <span class="animate-line">We are recovering from somewhere deeper.</span>
+        </p>
+        <p class="body"><span class="animate-line"><em>Return to Elsewhere. Return to the Real.</em></span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene closing" id="portal" data-scene="08">
+    <div class="scene-inner">
+      <div class="closing-copy">
+        <div class="kicker animate-line">08 — THE SIGNAL<br>IS OPEN</div>
+        <p class="body">
+          <span class="animate-line">Enter the Archive.</span>
+          <span class="animate-line">Read the Codex.</span>
+          <span class="animate-line">Consult the Oracle.</span>
+          <span class="animate-line">Cross the threshold.</span>
+        </p>
+      </div>
+      <div class="closing-actions">
+        <a class="primary" href="#archive"><span class="animate-line">ENTER PRPL PPL</span><span>→</span></a>
+        <a href="#access"><span class="animate-line">SHOP THE ARCHIVE</span><span>→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><div class="brand">PRPL PPL</div><p>Return to the Real.</p></div>
+  <div class="foot-links">
+    <a href="#elsewhere">Codex: 000</a><a href="#archive">Archive</a><a href="#observatory">Observatory</a><a href="#oracle">Oracle</a><a href="#portal">Portal</a><a href="#">Contact</a><a href="#">Instagram</a><a href="#">Email</a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+
+  const video = document.getElementById('bgVideo');
+  const progressBar = document.getElementById('progressBar');
+  const scenes = [...document.querySelectorAll('.scene')];
+  const navLinks = [...document.querySelectorAll('[data-nav]')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let duration = 0;
+  let scrollTarget = 0;
+  let scrollCurrent = 0;
+  let lastSeek = -1;
+  let raf = 0;
+  let resizeRaf = 0;
+  let ready = false;
+
+  // Keep the URL anchor jumps smooth without introducing a second scroll library.
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      const id = link.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
+  const clamp01 = v => Math.max(0, Math.min(1, v));
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const easeIn = t => t * t * t;
+  const smoothstep = t => t * t * (3 - 2 * t);
+
+  function smoothSegment(p, a, b) {
+    return clamp01((p - a) / Math.max(.0001, b - a));
+  }
+
+  function setTextAnimation(el, sceneProgress, index) {
+    // Text enters gently, stays readable for most of the scene,
+    // then exits only near the end so it remains on screen for several scroll gestures.
+    const delay = (Number(el.dataset.delay || 0) * .035) + (index % 7) * .028;
+    const enterStart = .08 + delay;
+    const enterEnd = .20 + delay;
+    const holdEnd = .86;
+    const exitEnd = .985;
+
+    const enterT = smoothSegment(sceneProgress, enterStart, enterEnd);
+    const exitT = smoothSegment(sceneProgress, holdEnd, exitEnd);
+    const enter = easeOut(enterT);
+    const exit = 1 - easeIn(exitT);
+    const opacity = Math.max(0, Math.min(1, Math.min(enter, exit)));
+
+    // Keep the text visually stable while scrolling through the middle of a scene.
+    const enterMove = (1 - enter) * 34;
+    const exitMove = exitT * 12;
+    const translate = enterMove - exitMove;
+    const blur = (1 - enter) * 7;
+
+    el.style.opacity = opacity.toFixed(4);
+    el.style.transform = `translate3d(0, ${translate.toFixed(2)}px, 0)`;
+    el.style.filter = `blur(${blur.toFixed(2)}px)`;
+  }
+
+  function animateScene(scene, sceneProgress) {
+    const lines = scene.querySelectorAll('.animate-line,.animate-word');
+    lines.forEach((el, i) => setTextAnimation(el, sceneProgress, i));
+  }
+
+  function update() {
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    scrollTarget = clamp01(window.scrollY / maxScroll);
+
+    // Spring-like interpolation keeps fast wheel/trackpad motion cinematic.
+    scrollCurrent += (scrollTarget - scrollCurrent) * (reducedMotion ? 0.3 : 0.105);
+    if (Math.abs(scrollTarget - scrollCurrent) < 0.00005) scrollCurrent = scrollTarget;
+
+    if (ready && duration > 0 && !reducedMotion) {
+      const desired = scrollCurrent * duration;
+      // Avoid hammering the media element with identical seeks.
+      if (Math.abs(desired - lastSeek) > 0.018) {
+        video.currentTime = desired;
+        lastSeek = desired;
+      }
+    }
+
+    const whole = scrollCurrent * 100;
+    progressBar.style.height = `${whole}%`;
+
+    scenes.forEach(scene => {
+      const rect = scene.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      const p = clamp01(-rect.top / travel);
+      animateScene(scene, p);
+    });
+
+    // Highlight the section currently occupying the screen center.
+    let active = null;
+    let best = Infinity;
+    scenes.forEach(scene => {
+      const rect = scene.getBoundingClientRect();
+      const centerDistance = Math.abs((rect.top + rect.bottom) / 2 - window.innerHeight / 2);
+      if (centerDistance < best) { best = centerDistance; active = scene.id; }
+    });
+    navLinks.forEach(link => link.classList.toggle('is-active', link.dataset.nav === active));
+
+    raf = requestAnimationFrame(update);
+  }
+
+  function primeVideo() {
+    const done = () => {
+      duration = Number.isFinite(video.duration) ? video.duration : 0;
+      ready = duration > 0;
+      video.currentTime = 0;
+      lastSeek = 0;
+      document.body.classList.add('is-ready');
+    };
+
+    video.addEventListener('loadedmetadata', done, { once: true });
+    video.addEventListener('canplay', () => {
+      if (!ready && Number.isFinite(video.duration)) done();
+    }, { once: true });
+
+    // Preload/prime the decoder. Muted + inline is accepted by modern browsers.
+    video.play().then(() => video.pause()).catch(() => {});
+  }
+
+  window.addEventListener('scroll', () => {}, { passive: true });
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(() => {
+      // Re-anchor the spring after a viewport size change so the video does not jump.
+      scrollCurrent = clamp01(window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight));
+    });
+  }, { passive: true });
+
+  // Reduced motion: show the first frame and make all text immediately readable.
+  if (reducedMotion) {
+    video.currentTime = 0;
+    document.querySelectorAll('.animate-line,.animate-word').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+    });
+    document.body.classList.add('is-ready');
+  } else {
+    primeVideo();
+  }
+
+  if (!raf) raf = requestAnimationFrame(update);
+})();
+</script>
+</body>
+</html>
