@@ -42,12 +42,13 @@ body{
   color:var(--ink);
   overflow-x:hidden;
   font-family:
-    Futura,
-    "Avenir Next",
-    Avenir,
     "Helvetica Neue",
     Helvetica,
     Arial,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
@@ -276,7 +277,7 @@ button{
     Consolas,
     "Liberation Mono",
     monospace;
-  letter-spacing:.14em;
+  letter-spacing:.13em;
   text-transform:uppercase;
   transition:
     color .3s ease,
@@ -466,7 +467,7 @@ button{
 
 .scene{
   position:relative;
-  min-height:250vh;
+  min-height:200vh;
 }
 
 .scene-stage{
@@ -571,8 +572,8 @@ button{
    ========================================================= */
 
 .scene--hero .scene-copy{
-  left:4.5%;
-  top:24%;
+  left:1.6%;
+  top:25.3%;
   width:min(640px,66%);
 }
 
@@ -629,14 +630,14 @@ button{
    ========================================================= */
 
 .scene--signal .scene-copy.left{
-  left:4.5%;
-  top:18%;
+  left:1.6%;
+  top:13.1%;
   width:260px;
 }
 
 .scene--signal .scene-copy.right{
-  left:4.5%;
-  top:46%;
+  left:1.6%;
+  top:39.0%;
   width:220px;
 }
 
@@ -645,14 +646,14 @@ button{
    ========================================================= */
 
 .scene--sanctum .scene-copy.left{
-  left:4.5%;
-  top:20%;
+  left:1.6%;
+  top:10.0%;
   width:240px;
 }
 
 .scene--sanctum .scene-copy.right{
-  right:4.5%;
-  top:56%;
+  right:2.1%;
+  top:52%;
   width:270px;
   transform:translateY(-50%);
   text-align:left;
@@ -663,15 +664,15 @@ button{
    ========================================================= */
 
 .scene--archive .scene-copy.left{
-  left:4.5%;
-  top:16%;
+  left:1.6%;
+  top:7.6%;
   width:240px;
 }
 
 .archive-card{
   position:absolute;
-  right:4.5%;
-  top:16%;
+  right:1.8%;
+  top:8.8%;
   width:250px;
   padding:18px 0 0;
 }
@@ -753,17 +754,17 @@ button{
    ========================================================= */
 
 .scene--access .scene-copy{
-  left:4.5%;
-  top:16%;
+  left:1.6%;
+  top:8.4%;
   width:220px;
 }
 
 .access-grid{
   position:absolute;
-  left:27%;
-  right:2.0%;
-  top:15%;
-  bottom:12%;
+  left:18.7%;
+  right:0;
+  top:7.2%;
+  bottom:7.2%;
   display:grid;
   grid-template-columns:repeat(5,1fr);
   border-top:1px solid rgba(255,255,255,.13);
@@ -878,14 +879,14 @@ button{
    ========================================================= */
 
 .scene--manifesto .scene-copy.left{
-  left:4.5%;
-  top:25%;
+  left:1.6%;
+  top:17.0%;
   width:310px;
 }
 
 .scene--manifesto .scene-copy.right{
-  left:39%;
-  top:25%;
+  left:36.0%;
+  top:17.0%;
   width:min(500px,47%);
 }
 
@@ -922,15 +923,15 @@ button{
    ========================================================= */
 
 .scene--closing .scene-copy.left{
-  left:4.5%;
-  bottom:22%;
+  left:1.6%;
+  bottom:17.1%;
   width:280px;
 }
 
 .scene--closing .closing-actions{
   position:absolute;
-  right:4.5%;
-  bottom:20.5%;
+  right:1.8%;
+  bottom:20.0%;
   width:240px;
   display:flex;
   flex-direction:column;
@@ -1411,7 +1412,7 @@ button{
   }
 
   .scene{
-    min-height:225vh;
+    min-height:190vh;
   }
 
   .scene-stage{
@@ -1419,7 +1420,7 @@ button{
   }
 
   .scene--hero .scene-copy{
-    left:4.5%;
+    left:0;
     top:24%;
     width:86%;
   }
@@ -1431,24 +1432,24 @@ button{
   }
 
   .scene--signal .scene-copy.left{
-    left:4.5%;
+    left:0;
     top:18%;
     width:220px;
   }
 
   .scene--signal .scene-copy.right{
-    left:4.5%;
-    top:47%;
+    left:0;
+    top:48%;
     width:220px;
   }
 
   .scene--sanctum .scene-copy.left{
-    left:4.5%;
-    top:17%;
+    left:0;
+    top:14%;
   }
 
   .scene--sanctum .scene-copy.right{
-    left:4.5%;
+    left:0;
     right:auto;
     top:67%;
     width:230px;
@@ -1456,12 +1457,12 @@ button{
   }
 
   .scene--archive .scene-copy.left{
-    left:4.5%;
-    top:15%;
+    left:0;
+    top:13%;
   }
 
   .archive-card{
-    left:4.5%;
+    left:0;
     right:auto;
     top:auto;
     bottom:14%;
@@ -1469,9 +1470,9 @@ button{
   }
 
   .scene--access .scene-copy{
-    left:4.5%;
-    top:13%;
-    width:190px;
+    left:0;
+    top:10%;
+    width:180px;
   }
 
   .access-grid{
@@ -1505,13 +1506,13 @@ button{
   }
 
   .scene--manifesto .scene-copy.left{
-    left:4.5%;
-    top:18%;
+    left:0;
+    top:14%;
     width:88%;
   }
 
   .scene--manifesto .scene-copy.right{
-    left:4.5%;
+    left:0;
     top:52%;
     width:87%;
   }
@@ -1521,7 +1522,7 @@ button{
   }
 
   .scene--closing .scene-copy.left{
-    left:4.5%;
+    left:0;
     bottom:28%;
     width:78%;
   }
@@ -1583,7 +1584,7 @@ button{
   }
 
   .scene{
-    min-height:235vh;
+    min-height:205vh;
   }
 
   .scene--hero .scene-copy{
@@ -1655,1993 +1656,6 @@ button{
     filter:none !important;
   }
 }
-
-/* =========================================================
-   FINAL REFERENCE / CONSISTENCY POLISH
-   ========================================================= */
-
-.scene-stage{
-  width:100vw;
-  max-width:none;
-  margin:0;
-}
-
-.scene-copy{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%);
-}
-
-.scene--hero .scene-copy{
-  left:8.35vw !important;
-  width:min(760px,76vw);
-}
-
-.scene--hero .title{
-  font-size:clamp(40px,3.75vw,66px);
-  line-height:1.14;
-  letter-spacing:.105em;
-}
-
-.scene--hero .title span{
-  white-space:nowrap;
-}
-
-.scene--hero .body{
-  margin-top:23px;
-}
-
-.scene--signal .scene-copy.left{
-  left:8.35vw !important;
-  width:360px;
-}
-
-.scene--signal .scene-copy.right{
-  left:8.35vw !important;
-  top:61% !important;
-  width:250px;
-}
-
-.scene--sanctum .scene-copy.left{
-  left:8.35vw !important;
-  width:300px;
-}
-
-.scene--sanctum .scene-copy.right{
-  right:8.35vw !important;
-  left:auto !important;
-  top:56% !important;
-  width:300px;
-  text-align:left;
-}
-
-.scene--archive .scene-copy.left{
-  left:8.35vw !important;
-  width:280px;
-}
-
-.scene--archive .archive-card{
-  right:8.35vw !important;
-  left:auto !important;
-  top:50% !important;
-  transform:translateY(-50%);
-  width:270px;
-}
-
-.scene--access .scene-copy{
-  left:7.8vw !important;
-  width:235px;
-}
-
-.scene--access .access-grid{
-  left:18.4%;
-  right:7.8vw;
-  top:50%;
-  bottom:auto;
-  height:min(72vh,590px);
-  transform:translateY(-50%);
-}
-
-.access-card{
-  display:grid;
-  grid-template-rows:58px auto minmax(95px,1fr) auto;
-  align-content:start;
-  min-height:0;
-  padding:24px 20px 18px;
-}
-
-.access-icon{
-  height:58px;
-  font-size:28px;
-}
-
-.access-card h3{
-  margin:16px 0 12px;
-  font-size:9px;
-  letter-spacing:.13em;
-}
-
-.access-card p{
-  min-height:0;
-  font-size:7.5px;
-  line-height:1.72;
-}
-
-.access-card a{
-  position:relative;
-  width:max-content;
-  padding-right:31px;
-  margin-top:18px;
-  font-size:6.5px;
-  line-height:1;
-}
-
-.access-card a::after{
-  content:"→";
-  position:absolute;
-  right:0;
-  top:50%;
-  width:22px;
-  height:22px;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(221,198,255,.42);
-  border-radius:50%;
-  transform:translateY(-50%);
-  font-size:9px;
-  transition:
-    background .3s ease,
-    border-color .3s ease,
-    transform .3s var(--ease);
-}
-
-.access-card a:hover::after{
-  background:rgba(215,187,255,.13);
-  border-color:rgba(255,255,255,.68);
-  transform:translateY(-50%) translateX(2px);
-}
-
-.access-card:nth-child(1) .access-icon,
-.access-card:nth-child(1) h3{
-  color:#dcbcff;
-}
-
-.access-card:nth-child(2) .access-icon,
-.access-card:nth-child(2) h3{
-  color:#9defff;
-}
-
-.access-card:nth-child(3) .access-icon,
-.access-card:nth-child(3) h3{
-  color:#d8edff;
-}
-
-.access-card:nth-child(4) .access-icon,
-.access-card:nth-child(4) h3{
-  color:#d7b2ff;
-}
-
-.access-card:nth-child(5) .access-icon,
-.access-card:nth-child(5) h3{
-  color:#ff9eaa;
-}
-
-.access-card:nth-child(2){
-  background:
-    radial-gradient(
-      circle at 50% 20%,
-      rgba(99,224,255,.10),
-      transparent 45%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(7,18,28,.25),
-      rgba(4,7,15,.34)
-    );
-}
-
-.scene--manifesto .scene-copy.left{
-  left:8.35vw !important;
-  width:330px;
-}
-
-.scene--manifesto .scene-copy.right{
-  left:39.5% !important;
-  width:min(560px,46vw);
-}
-
-.scene--manifesto .kicker{
-  margin-bottom:18px;
-}
-
-.manifesto-title{
-  font-size:clamp(42px,4vw,58px);
-  line-height:1.24;
-  letter-spacing:.15em;
-}
-
-.manifesto-body{
-  font-size:8.5px;
-  line-height:1.95;
-}
-
-.scene--closing .scene-copy.left{
-  left:8.35vw !important;
-  width:310px;
-  bottom:auto !important;
-}
-
-.scene--closing .closing-actions{
-  right:8.35vw !important;
-  left:auto !important;
-  top:50%;
-  bottom:auto;
-  transform:translateY(-50%);
-  width:270px;
-}
-
-.action-btn{
-  min-height:52px;
-  padding:0 14px 0 18px;
-  font-size:8px;
-}
-
-.section-controller{
-  left:4.45vw;
-  bottom:24px;
-}
-
-@media (max-width:900px){
-
-  .scene-copy{
-    top:50% !important;
-  }
-
-  .scene--hero .scene-copy{
-    left:8vw !important;
-    width:82vw;
-  }
-
-  .scene--hero .title{
-    font-size:clamp(31px,7.5vw,50px);
-    letter-spacing:.075em;
-  }
-
-  .scene--hero .title span{
-    white-space:normal;
-  }
-
-  .scene--signal .scene-copy.left,
-  .scene--signal .scene-copy.right,
-  .scene--sanctum .scene-copy.left,
-  .scene--sanctum .scene-copy.right,
-  .scene--archive .scene-copy.left,
-  .scene--manifesto .scene-copy.left,
-  .scene--manifesto .scene-copy.right{
-    left:8vw !important;
-    right:auto !important;
-    width:82vw;
-  }
-
-  .scene--signal .scene-copy.right{
-    top:63% !important;
-  }
-
-  .scene--sanctum .scene-copy.right{
-    top:68% !important;
-    width:70vw;
-  }
-
-  .scene--archive .archive-card{
-    left:8vw !important;
-    right:auto !important;
-    top:71% !important;
-    width:min(280px,76vw);
-    transform:translateY(-50%);
-  }
-
-  .scene--access .scene-copy{
-    left:8vw !important;
-    width:29vw;
-    max-width:200px;
-  }
-
-  .scene--access .access-grid{
-    left:32%;
-    right:5vw;
-    height:72vh;
-  }
-
-  .access-card{
-    padding:15px 12px 14px;
-    grid-template-rows:44px auto minmax(68px,1fr) auto;
-  }
-
-  .access-icon{
-    height:44px;
-    font-size:22px;
-  }
-
-  .access-card h3{
-    font-size:7px;
-  }
-
-  .access-card p{
-    font-size:6.3px;
-  }
-
-  .access-card a{
-    font-size:5.7px;
-  }
-
-  .scene--manifesto .scene-copy.right{
-    top:63% !important;
-  }
-
-  .scene--closing .scene-copy.left{
-    left:8vw !important;
-    width:75vw;
-    top:43% !important;
-  }
-
-  .scene--closing .closing-actions{
-    left:8vw !important;
-    right:auto !important;
-    top:72%;
-    width:min(290px,76vw);
-    transform:translateY(-50%);
-  }
-
-  .section-controller{
-    left:20px;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene--hero .title{
-    font-size:clamp(27px,7.2vw,41px);
-  }
-
-  .scene--access .scene-copy{
-    width:27vw;
-  }
-
-  .scene--access .access-grid{
-    left:29%;
-    right:3vw;
-    height:76vh;
-  }
-
-  .access-card{
-    padding:12px 9px;
-  }
-
-  .access-card h3{
-    font-size:6.3px;
-  }
-
-  .access-card p{
-    font-size:5.7px;
-  }
-
-  .access-card a{
-    font-size:5.1px;
-  }
-
-  .access-card a::after{
-    width:18px;
-    height:18px;
-  }
-
-  .scene--manifesto .scene-copy.right{
-    top:66% !important;
-  }
-
-  .scene--closing .closing-actions{
-    top:75%;
-  }
-}
-
-/* =========================================================
-   FINAL TYPOGRAPHY BALANCE
-   Hero stays at its current size.
-   Lower sections return to a larger, readable scale.
-   ========================================================= */
-
-.scene:not(.scene--hero) .body{
-  font-size:clamp(11px,.82vw,13px);
-  line-height:1.9;
-  max-width:330px;
-}
-
-.scene:not(.scene--hero) .eyebrow{
-  font-size:clamp(9px,.67vw,11px);
-  line-height:1.9;
-}
-
-.scene--signal .scene-copy.left .kicker:last-child,
-.scene--sanctum .scene-copy.left .kicker:nth-of-type(2),
-.scene--archive .scene-copy.left .kicker:nth-of-type(2),
-.scene--access .scene-copy .kicker:nth-of-type(2){
-  font-size:clamp(10px,.85vw,13px);
-  line-height:1.65;
-  letter-spacing:.14em;
-}
-
-.scene--signal .scene-copy.left .kicker:first-child,
-.scene--sanctum .scene-copy.left .kicker:first-child,
-.scene--archive .scene-copy.left .kicker:first-child,
-.scene--access .scene-copy .kicker:first-child{
-  font-size:clamp(8px,.58vw,9px);
-}
-
-.archive-label{
-  font-size:clamp(8px,.58vw,10px);
-}
-
-.archive-name{
-  font-size:clamp(10px,.72vw,12px);
-}
-
-.archive-meta span:last-child{
-  font-size:clamp(8px,.60vw,10px);
-}
-
-.scene--manifesto .manifesto-body{
-  font-size:clamp(9px,.66vw,11px);
-  line-height:1.95;
-}
-
-.scene--manifesto .manifesto-title{
-  font-size:clamp(40px,4vw,58px);
-}
-
-.access-card h3{
-  font-size:clamp(9px,.68vw,11px);
-}
-
-.access-card p{
-  font-size:clamp(7.5px,.58vw,9px);
-  line-height:1.78;
-}
-
-.access-card a{
-  font-size:clamp(6.5px,.50vw,8px);
-}
-
-.scene--closing .body{
-  font-size:clamp(10px,.72vw,12px);
-}
-
-@media (max-width:900px){
-
-  .scene:not(.scene--hero) .body{
-    font-size:12px;
-    line-height:1.88;
-  }
-
-  .scene:not(.scene--hero) .eyebrow{
-    font-size:9px;
-  }
-
-  .scene--signal .scene-copy.left .kicker:last-child,
-  .scene--sanctum .scene-copy.left .kicker:nth-of-type(2),
-  .scene--archive .scene-copy.left .kicker:nth-of-type(2),
-  .scene--access .scene-copy .kicker:nth-of-type(2){
-    font-size:10px;
-  }
-
-  .access-card h3{
-    font-size:8px;
-  }
-
-  .access-card p{
-    font-size:7px;
-  }
-
-  .access-card a{
-    font-size:6px;
-  }
-
-  .scene--manifesto .manifesto-body{
-    font-size:9px;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene:not(.scene--hero) .body{
-    font-size:10px;
-  }
-
-  .scene:not(.scene--hero) .eyebrow{
-    font-size:8px;
-  }
-
-  .scene--signal .scene-copy.left .kicker:last-child,
-  .scene--sanctum .scene-copy.left .kicker:nth-of-type(2),
-  .scene--archive .scene-copy.left .kicker:nth-of-type(2),
-  .scene--access .scene-copy .kicker:nth-of-type(2){
-    font-size:9px;
-  }
-
-  .access-card h3{
-    font-size:7px;
-  }
-
-  .access-card p{
-    font-size:6.2px;
-  }
-}
-
-/* =========================================================
-   FINAL LOWER-SECTIONS TYPOGRAPHY BOOST
-   Hero is intentionally untouched.
-   Sections 02–08 are increased by ~60% for stronger
-   readability and visual consistency.
-   ========================================================= */
-
-.scene:not(.scene--hero) .body{
-  font-size:clamp(17.6px,1.31vw,20.8px);
-  line-height:1.78;
-  max-width:540px;
-}
-
-.scene:not(.scene--hero) .eyebrow{
-  font-size:clamp(14.4px,1.07vw,17.6px);
-  line-height:1.75;
-}
-
-.scene--signal .scene-copy.left .kicker:last-child,
-.scene--sanctum .scene-copy.left .kicker:nth-of-type(2),
-.scene--archive .scene-copy.left .kicker:nth-of-type(2),
-.scene--access .scene-copy .kicker:nth-of-type(2){
-  font-size:clamp(16px,1.36vw,20.8px);
-  line-height:1.6;
-  letter-spacing:.12em;
-}
-
-.scene--signal .scene-copy.left .kicker:first-child,
-.scene--sanctum .scene-copy.left .kicker:first-child,
-.scene--archive .scene-copy.left .kicker:first-child,
-.scene--access .scene-copy .kicker:first-child{
-  font-size:clamp(12.8px,.93vw,14.4px);
-}
-
-.archive-label{
-  font-size:clamp(12.8px,.93vw,16px);
-}
-
-.archive-name{
-  font-size:clamp(16px,1.15vw,19.2px);
-}
-
-.archive-meta span:first-child{
-  font-size:clamp(9.6px,.70vw,11.2px);
-}
-
-.archive-meta span:last-child{
-  font-size:clamp(12.8px,.96vw,16px);
-}
-
-.scene--manifesto .manifesto-title{
-  font-size:clamp(48px,6.4vw,92px);
-  line-height:1.18;
-}
-
-.scene--manifesto .manifesto-body{
-  font-size:clamp(14.4px,1.06vw,17.6px);
-  line-height:1.88;
-  max-width:760px;
-}
-
-.scene--closing .body{
-  font-size:clamp(16px,1.15vw,19.2px);
-}
-
-.access-card h3{
-  font-size:clamp(14.4px,1.09vw,17.6px);
-}
-
-.access-card p{
-  font-size:clamp(12px,.93vw,14.4px);
-  line-height:1.72;
-  min-height:118px;
-}
-
-.access-card a{
-  font-size:clamp(10.4px,.80vw,12.8px);
-}
-
-.archive-card .micro-cta,
-.scene--archive .micro-cta,
-.scene--hero .micro-cta{
-  font-size:inherit;
-}
-
-/* Keep the larger text vertically centered in each scene */
-.scene:not(.scene--hero) .scene-stage{
-  display:block;
-}
-
-.scene--signal .scene-copy.left,
-.scene--signal .scene-copy.right,
-.scene--sanctum .scene-copy.left,
-.scene--sanctum .scene-copy.right,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy,
-.scene--manifesto .scene-copy.left,
-.scene--manifesto .scene-copy.right{
-  top:50%;
-  transform:translateY(-50%);
-}
-
-/* Preserve the reference composition for the archive card */
-.scene--archive .archive-card{
-  top:50%;
-  transform:translateY(-50%);
-}
-
-/* Access-point cards stay centered as a single visual block */
-.scene--access .access-grid{
-  top:50%;
-  bottom:auto;
-  transform:translateY(-50%);
-  height:min(74vh,600px);
-}
-
-/* Closing scene remains low, like the reference */
-.scene--closing .scene-copy.left{
-  top:auto;
-  bottom:17.1%;
-  transform:none;
-}
-
-/* =========================================================
-   MOBILE — same relative 60% boost
-   ========================================================= */
-
-@media (max-width:900px){
-
-  .scene:not(.scene--hero) .body{
-    font-size:19.2px;
-    line-height:1.75;
-  }
-
-  .scene:not(.scene--hero) .eyebrow{
-    font-size:14.4px;
-    line-height:1.8;
-  }
-
-  .scene--signal .scene-copy.left .kicker:last-child,
-  .scene--sanctum .scene-copy.left .kicker:nth-of-type(2),
-  .scene--archive .scene-copy.left .kicker:nth-of-type(2),
-  .scene--access .scene-copy .kicker:nth-of-type(2){
-    font-size:16px;
-  }
-
-  .access-card h3{
-    font-size:12.8px;
-  }
-
-  .access-card p{
-    font-size:10.4px;
-    min-height:90px;
-  }
-
-  .access-card a{
-    font-size:9px;
-  }
-
-  .scene--manifesto .manifesto-title{
-    font-size:clamp(42px,8vw,66px);
-  }
-
-  .scene--manifesto .manifesto-body{
-    font-size:13px;
-  }
-
-  .scene--signal .scene-copy.left,
-  .scene--signal .scene-copy.right,
-  .scene--sanctum .scene-copy.left,
-  .scene--sanctum .scene-copy.right,
-  .scene--archive .scene-copy.left,
-  .scene--access .scene-copy,
-  .scene--manifesto .scene-copy.left,
-  .scene--manifesto .scene-copy.right{
-    top:50%;
-    transform:translateY(-50%);
-  }
-
-  .scene--archive .archive-card{
-    top:50%;
-    transform:translateY(-50%);
-  }
-
-  .scene--access .access-grid{
-    top:50%;
-    bottom:auto;
-    height:78vh;
-    transform:translateY(-50%);
-  }
-}
-
-@media (max-width:520px){
-
-  .scene:not(.scene--hero) .body{
-    font-size:15px;
-  }
-
-  .scene:not(.scene--hero) .eyebrow{
-    font-size:11px;
-  }
-
-  .scene--signal .scene-copy.left .kicker:last-child,
-  .scene--sanctum .scene-copy.left .kicker:nth-of-type(2),
-  .scene--archive .scene-copy.left .kicker:nth-of-type(2),
-  .scene--access .scene-copy .kicker:nth-of-type(2){
-    font-size:12px;
-  }
-
-  .scene--manifesto .manifesto-title{
-    font-size:clamp(34px,9vw,48px);
-  }
-
-  .scene--manifesto .manifesto-body{
-    font-size:11px;
-  }
-
-  .access-card h3{
-    font-size:10px;
-  }
-
-  .access-card p{
-    font-size:8px;
-  }
-
-  .access-card a{
-    font-size:7px;
-  }
-
-  .scene--access .access-grid{
-    height:70vh;
-  }
-}
-
-/* =========================================================
-   FINAL LAYOUT / TYPOGRAPHY / SCROLL POLISH
-   Reference-focused corrections
-   ========================================================= */
-
-/* Reduce the amount of blank scroll space between scenes. */
-.scene{
-  min-height:150vh !important;
-}
-
-.scene--hero{
-  min-height:135vh !important;
-}
-
-/* Keep every scene's content visually centered in the viewport. */
-.scene-stage{
-  height:100vh;
-  height:100svh;
-}
-
-/* ---------- SECTION 02 ---------- */
-
-.scene--signal .scene-copy.left{
-  left:8.35vw !important;
-  top:39% !important;
-  width:min(370px,34vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.left .kicker:last-child{
-  margin:0 !important;
-  font-size:clamp(18px,1.35vw,21px) !important;
-  line-height:1.45 !important;
-  letter-spacing:.12em !important;
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.right{
-  left:8.35vw !important;
-  right:auto !important;
-  top:61% !important;
-  width:min(330px,30vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.right .body{
-  max-width:330px !important;
-  font-size:clamp(13px,.96vw,15px) !important;
-  line-height:1.85 !important;
-  letter-spacing:.015em !important;
-  text-align:left !important;
-}
-
-/* ---------- SECTION 03 ---------- */
-
-.scene--sanctum .scene-copy.left{
-  left:8.35vw !important;
-  top:50% !important;
-  width:310px !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--sanctum .scene-copy.left .body{
-  max-width:310px !important;
-  font-size:clamp(13px,.96vw,15px) !important;
-  line-height:1.82 !important;
-}
-
-.scene--sanctum .scene-copy.right{
-  right:8.35vw !important;
-  left:auto !important;
-  top:50% !important;
-  width:300px !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--sanctum .scene-copy.right .eyebrow{
-  font-size:clamp(10px,.72vw,12px) !important;
-  line-height:1.85 !important;
-}
-
-/* ---------- SECTION 04 ---------- */
-
-.scene--archive .scene-copy.left{
-  left:8.35vw !important;
-  top:50% !important;
-  width:300px !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--archive .scene-copy.left .body{
-  max-width:300px !important;
-  font-size:clamp(13px,.96vw,15px) !important;
-  line-height:1.82 !important;
-}
-
-.scene--archive .archive-card{
-  right:8.35vw !important;
-  top:50% !important;
-  width:270px !important;
-  transform:translateY(-50%) !important;
-}
-
-/* ---------- SECTION 05 ---------- */
-
-.scene--access .scene-copy{
-  left:7.8vw !important;
-  top:50% !important;
-  width:240px !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--access .scene-copy .body{
-  max-width:235px !important;
-  font-size:clamp(13px,.96vw,15px) !important;
-  line-height:1.82 !important;
-}
-
-.scene--access .access-grid{
-  left:18.4% !important;
-  right:7.8vw !important;
-  top:50% !important;
-  bottom:auto !important;
-  height:min(72vh,590px) !important;
-  transform:translateY(-50%) !important;
-}
-
-.access-card{
-  grid-template-rows:58px auto minmax(95px,1fr) auto !important;
-  padding:24px 20px 18px !important;
-}
-
-.access-card h3{
-  font-size:clamp(9px,.68vw,11px) !important;
-  line-height:1.45 !important;
-}
-
-.access-card p{
-  font-size:clamp(7.5px,.58vw,9px) !important;
-  line-height:1.75 !important;
-}
-
-/* ---------- SECTION 06 / MANIFESTO ---------- */
-
-.scene--manifesto .scene-copy.left{
-  left:8.35vw !important;
-  top:50% !important;
-  width:360px !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--manifesto .manifesto-title{
-  margin:0 !important;
-  font-size:clamp(40px,4.0vw,58px) !important;
-  line-height:1.20 !important;
-  letter-spacing:.14em !important;
-  text-align:left !important;
-}
-
-.scene--manifesto .scene-copy.right{
-  left:39% !important;
-  right:auto !important;
-  top:50% !important;
-  width:min(560px,46vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--manifesto .manifesto-body{
-  max-width:560px !important;
-  font-size:clamp(10px,.72vw,12px) !important;
-  line-height:1.92 !important;
-  letter-spacing:.012em !important;
-  text-align:left !important;
-}
-
-/* ---------- SECTION 07 / CLOSING ---------- */
-
-.scene--closing .scene-copy.left{
-  left:8.35vw !important;
-  top:50% !important;
-  bottom:auto !important;
-  width:330px !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--closing .scene-copy.left .body{
-  max-width:320px !important;
-  font-size:clamp(13px,.96vw,15px) !important;
-  line-height:1.85 !important;
-}
-
-.scene--closing .closing-actions{
-  right:8.35vw !important;
-  left:auto !important;
-  top:50% !important;
-  bottom:auto !important;
-  width:270px !important;
-  transform:translateY(-50%) !important;
-}
-
-/* ---------- TEXT HOLD / TRANSITION ---------- */
-
-.animate-line{
-  transition:none !important;
-}
-
-.scene:not(.scene--hero) .kicker{
-  line-height:1.55;
-}
-
-.scene:not(.scene--hero) .body,
-.scene:not(.scene--hero) .eyebrow,
-.scene:not(.scene--hero) .manifesto-body{
-  text-wrap:balance;
-}
-
-/* ---------- MOBILE ---------- */
-
-@media (max-width:900px){
-
-  .scene{
-    min-height:155vh !important;
-  }
-
-  .scene--hero{
-    min-height:140vh !important;
-  }
-
-  .scene--signal .scene-copy.left{
-    left:8vw !important;
-    top:40% !important;
-    width:78vw !important;
-  }
-
-  .scene--signal .scene-copy.right{
-    left:8vw !important;
-    top:62% !important;
-    width:75vw !important;
-  }
-
-  .scene--sanctum .scene-copy.left{
-    left:8vw !important;
-    top:42% !important;
-    width:78vw !important;
-  }
-
-  .scene--sanctum .scene-copy.right{
-    left:8vw !important;
-    right:auto !important;
-    top:70% !important;
-    width:70vw !important;
-  }
-
-  .scene--archive .scene-copy.left{
-    left:8vw !important;
-    top:37% !important;
-    width:76vw !important;
-  }
-
-  .scene--archive .archive-card{
-    left:8vw !important;
-    right:auto !important;
-    top:72% !important;
-    width:min(290px,76vw) !important;
-  }
-
-  .scene--access .scene-copy{
-    left:8vw !important;
-    top:28% !important;
-    width:28vw !important;
-  }
-
-  .scene--access .access-grid{
-    left:31% !important;
-    right:5vw !important;
-    top:58% !important;
-    height:72vh !important;
-  }
-
-  .scene--manifesto .scene-copy.left{
-    left:8vw !important;
-    top:35% !important;
-    width:80vw !important;
-  }
-
-  .scene--manifesto .scene-copy.right{
-    left:8vw !important;
-    top:66% !important;
-    width:78vw !important;
-  }
-
-  .scene--manifesto .manifesto-title{
-    font-size:clamp(34px,8vw,52px) !important;
-  }
-
-  .scene--closing .scene-copy.left{
-    left:8vw !important;
-    top:44% !important;
-    width:75vw !important;
-  }
-
-  .scene--closing .closing-actions{
-    left:8vw !important;
-    right:auto !important;
-    top:70% !important;
-    width:min(290px,76vw) !important;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene{
-    min-height:165vh !important;
-  }
-
-  .scene--hero{
-    min-height:145vh !important;
-  }
-
-  .scene--signal .scene-copy.left .kicker:last-child{
-    font-size:15px !important;
-    line-height:1.5 !important;
-  }
-
-  .scene--signal .scene-copy.right .body,
-  .scene--sanctum .scene-copy.left .body,
-  .scene--archive .scene-copy.left .body,
-  .scene--access .scene-copy .body,
-  .scene--closing .scene-copy.left .body{
-    font-size:11px !important;
-    line-height:1.82 !important;
-  }
-
-  .scene--manifesto .manifesto-title{
-    font-size:clamp(30px,9vw,44px) !important;
-  }
-
-  .scene--manifesto .manifesto-body{
-    font-size:9px !important;
-    line-height:1.9 !important;
-  }
-}
-
-/* =========================================================
-   FINAL SCROLL RHYTHM
-   Shorter travel + longer content hold + no empty dead zone.
-   ========================================================= */
-
-.scene{
-  min-height:118vh !important;
-}
-
-.scene--hero{
-  min-height:112vh !important;
-}
-
-.scene-stage{
-  height:100vh !important;
-  height:100svh !important;
-}
-
-/* Keep scene content centered so the hand-off is continuous. */
-.scene--signal .scene-copy.left,
-.scene--signal .scene-copy.right,
-.scene--sanctum .scene-copy.left,
-.scene--sanctum .scene-copy.right,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy,
-.scene--manifesto .scene-copy.left,
-.scene--manifesto .scene-copy.right{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-/* Closing scene uses the same visual center. */
-.scene--closing .scene-copy.left{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--closing .closing-actions{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-/* Section 02: clean left alignment and comfortable line height. */
-.scene--signal .scene-copy.left,
-.scene--signal .scene-copy.right{
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.left .kicker:last-child{
-  line-height:1.48 !important;
-}
-
-.scene--signal .scene-copy.right .body{
-  line-height:1.86 !important;
-}
-
-/* Section 05: keep the five cards together as one centered layer. */
-.scene--access .access-grid{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-/* Do not create a visible empty tail inside a section. */
-.scene::after{
-  display:none !important;
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width:900px){
-
-  .scene{
-    min-height:130vh !important;
-  }
-
-  .scene--hero{
-    min-height:122vh !important;
-  }
-
-  .scene--signal .scene-copy.left,
-  .scene--signal .scene-copy.right,
-  .scene--sanctum .scene-copy.left,
-  .scene--sanctum .scene-copy.right,
-  .scene--archive .scene-copy.left{
-    top:50% !important;
-    transform:translateY(-50%) !important;
-  }
-
-  .scene--access .scene-copy{
-    top:31% !important;
-    transform:translateY(-50%) !important;
-  }
-
-  .scene--access .access-grid{
-    top:67% !important;
-    bottom:auto !important;
-    transform:translateY(-50%) !important;
-  }
-
-  .scene--manifesto .scene-copy.left{
-    top:36% !important;
-    transform:translateY(-50%) !important;
-  }
-
-  .scene--manifesto .scene-copy.right{
-    top:66% !important;
-    transform:translateY(-50%) !important;
-  }
-
-  .scene--closing .scene-copy.left{
-    top:48% !important;
-    bottom:auto !important;
-    transform:translateY(-50%) !important;
-  }
-
-  .scene--closing .closing-actions{
-    top:72% !important;
-    bottom:auto !important;
-    transform:translateY(-50%) !important;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene{
-    min-height:136vh !important;
-  }
-
-  .scene--hero{
-    min-height:126vh !important;
-  }
-}
-
-/* =========================================================
-   FINAL CONTENT HOLD + SECTION TRANSITION
-   Keep each text layer on screen for several scrolls.
-   No long empty-video gap, no instant disappearance.
-   ========================================================= */
-
-/* Moderate scene travel: enough scroll room for several wheel
-   movements, but much shorter than the original long sections. */
-.scene{
-  min-height:145vh !important;
-}
-
-.scene--hero{
-  min-height:135vh !important;
-}
-
-.scene-stage{
-  height:100vh !important;
-  height:100svh !important;
-}
-
-/* Hold each section's text in a stable vertical position. */
-.scene--signal .scene-copy.left,
-.scene--signal .scene-copy.right,
-.scene--sanctum .scene-copy.left,
-.scene--sanctum .scene-copy.right,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy,
-.scene--manifesto .scene-copy.left,
-.scene--manifesto .scene-copy.right,
-.scene--closing .scene-copy.left{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--closing .scene-copy.left{
-  bottom:auto !important;
-}
-
-.scene--closing .closing-actions{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-/* Keep the access-point block centered while it holds. */
-.scene--access .access-grid{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-/* No artificial blank tail between sections. */
-.scene::after{
-  display:none !important;
-}
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width:900px){
-  .scene{
-    min-height:150vh !important;
-  }
-
-  .scene--hero{
-    min-height:138vh !important;
-  }
-}
-
-@media (max-width:520px){
-  .scene{
-    min-height:155vh !important;
-  }
-
-  .scene--hero{
-    min-height:142vh !important;
-  }
-}
-
-/* =========================================================
-   V9 — BALANCED CINEMATIC SCROLL
-   ========================================================= */
-
-.scene{
-  min-height:150vh !important;
-}
-
-.scene--hero{
-  min-height:138vh !important;
-}
-
-.scene-stage{
-  height:100vh !important;
-  height:100svh !important;
-}
-
-/* SECTION 02 — prevent title/body overlap */
-.scene--signal .scene-copy.left{
-  left:8.35vw !important;
-  top:42% !important;
-  width:min(390px,34vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.right{
-  left:8.35vw !important;
-  right:auto !important;
-  top:64% !important;
-  width:min(360px,32vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-/* OTHER SCENES — centered composition */
-.scene--sanctum .scene-copy.left,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--sanctum .scene-copy.right{
-  top:55% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--archive .archive-card{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--access .access-grid{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--manifesto .scene-copy.left{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--manifesto .scene-copy.right{
-  top:52% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--closing .scene-copy.left{
-  top:48% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--closing .closing-actions{
-  top:52% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-/* Make section hand-offs visually clean. */
-.scene::after{
-  display:none !important;
-}
-
-/* MOBILE */
-@media (max-width:900px){
-
-  .scene{
-    min-height:150vh !important;
-  }
-
-  .scene--hero{
-    min-height:140vh !important;
-  }
-
-  .scene--signal .scene-copy.left{
-    left:8vw !important;
-    top:40% !important;
-    width:78vw !important;
-  }
-
-  .scene--signal .scene-copy.right{
-    left:8vw !important;
-    top:66% !important;
-    width:75vw !important;
-  }
-
-  .scene--sanctum .scene-copy.left,
-  .scene--archive .scene-copy.left{
-    left:8vw !important;
-    top:50% !important;
-  }
-
-  .scene--sanctum .scene-copy.right{
-    left:8vw !important;
-    right:auto !important;
-    top:72% !important;
-  }
-
-  .scene--access .scene-copy{
-    left:8vw !important;
-    top:30% !important;
-  }
-
-  .scene--access .access-grid{
-    left:31% !important;
-    right:5vw !important;
-    top:67% !important;
-    height:72vh !important;
-  }
-
-  .scene--manifesto .scene-copy.left{
-    left:8vw !important;
-    top:35% !important;
-  }
-
-  .scene--manifesto .scene-copy.right{
-    left:8vw !important;
-    top:68% !important;
-  }
-
-  .scene--closing .scene-copy.left{
-    left:8vw !important;
-    top:46% !important;
-  }
-
-  .scene--closing .closing-actions{
-    left:8vw !important;
-    right:auto !important;
-    top:73% !important;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene{
-    min-height:152vh !important;
-  }
-
-  .scene--hero{
-    min-height:140vh !important;
-  }
-}
-
-/* =========================================================
-   V10 — BALANCED SCROLL RHYTHM
-   Hero is reduced ~22%; Section 02 gets more reading room;
-   all other sections use a shorter hand-off to avoid dead
-   video-only scrolling.
-   ========================================================= */
-
-/* Reduce the hero headline only. */
-.scene--hero .title{
-  font-size:clamp(31px,3.0vw,52px) !important;
-  line-height:1.15 !important;
-  letter-spacing:.105em !important;
-}
-
-@media (max-width:900px){
-  .scene--hero .title{
-    font-size:clamp(27px,6.3vw,41px) !important;
-  }
-}
-
-@media (max-width:520px){
-  .scene--hero .title{
-    font-size:clamp(25px,6.4vw,36px) !important;
-  }
-}
-
-/* Shorter scene travel overall = much less empty video.
-   Section 02 is deliberately longer so its content has more
-   room to remain on screen. */
-.scene{
-  min-height:128vh !important;
-}
-
-.scene--hero{
-  min-height:125vh !important;
-}
-
-.scene--signal{
-  min-height:155vh !important;
-}
-
-/* Keep the cinematic frame stable. */
-.scene-stage{
-  height:100vh !important;
-  height:100svh !important;
-}
-
-/* Center lower content consistently. */
-.scene--sanctum .scene-copy.left,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy,
-.scene--manifesto .scene-copy.left,
-.scene--manifesto .scene-copy.right{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--sanctum .scene-copy.right{
-  top:55% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--archive .archive-card{
-  top:50% !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--access .access-grid{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--closing .scene-copy.left{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--closing .closing-actions{
-  top:52% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-/* Section 02: title and supporting copy stay separated. */
-.scene--signal .scene-copy.left{
-  left:8.35vw !important;
-  top:43% !important;
-  width:min(390px,34vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.right{
-  left:8.35vw !important;
-  right:auto !important;
-  top:64% !important;
-  width:min(360px,32vw) !important;
-  transform:translateY(-50%) !important;
-  text-align:left !important;
-}
-
-.scene--signal .scene-copy.left .kicker:last-child{
-  line-height:1.46 !important;
-}
-
-.scene--signal .scene-copy.right .body{
-  line-height:1.86 !important;
-}
-
-/* Keep lower text readable but not oversized. */
-.scene--signal .scene-copy.right .body,
-.scene--sanctum .scene-copy.left .body,
-.scene--archive .scene-copy.left .body,
-.scene--access .scene-copy .body,
-.scene--closing .scene-copy.left .body{
-  text-wrap:balance;
-}
-
-/* Mobile gets slightly more room, while staying well below the
-   old 200vh+ sections. */
-@media (max-width:900px){
-
-  .scene{
-    min-height:132vh !important;
-  }
-
-  .scene--hero{
-    min-height:128vh !important;
-  }
-
-  .scene--signal{
-    min-height:150vh !important;
-  }
-
-  .scene--signal .scene-copy.left{
-    left:8vw !important;
-    top:41% !important;
-    width:78vw !important;
-  }
-
-  .scene--signal .scene-copy.right{
-    left:8vw !important;
-    top:66% !important;
-    width:75vw !important;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene{
-    min-height:135vh !important;
-  }
-
-  .scene--hero{
-    min-height:130vh !important;
-  }
-
-  .scene--signal{
-    min-height:148vh !important;
-  }
-}
-
-/* =========================================================
-   V11 — LONGER SECTION HOLDS
-   Slightly more scroll per scene, including the hero.
-   Everything else remains unchanged.
-   ========================================================= */
-
-.scene{
-  min-height:160vh !important;
-}
-
-.scene--hero{
-  min-height:152vh !important;
-}
-
-/* Section 02 gets just a little extra room because it contains
-   both the title and supporting copy. */
-.scene--signal{
-  min-height:168vh !important;
-}
-
-@media (max-width:900px){
-  .scene{
-    min-height:160vh !important;
-  }
-
-  .scene--hero{
-    min-height:150vh !important;
-  }
-
-  .scene--signal{
-    min-height:165vh !important;
-  }
-}
-
-@media (max-width:520px){
-  .scene{
-    min-height:164vh !important;
-  }
-
-  .scene--hero{
-    min-height:152vh !important;
-  }
-
-  .scene--signal{
-    min-height:164vh !important;
-  }
-}
-
-/* =========================================================
-   V12 — BALANCED LONG-HOLD SCROLL
-   Final override for the repeated section-height rules.
-   ========================================================= */
-
-/* Enough travel for several scroll movements, but substantially
-   shorter than v11 so the next section arrives sooner. */
-.scene{
-  min-height:142vh !important;
-}
-
-.scene--hero{
-  min-height:136vh !important;
-}
-
-/* Section 02 has a little more breathing room because it has
-   two content groups, without becoming a long empty sequence. */
-.scene--signal{
-  min-height:148vh !important;
-}
-
-/* Keep the visual stage fixed at the viewport. */
-.scene-stage{
-  height:100vh !important;
-  height:100svh !important;
-}
-
-/* Keep every section's main copy vertically centered. */
-.scene--signal .scene-copy.left,
-.scene--signal .scene-copy.right,
-.scene--sanctum .scene-copy.left,
-.scene--sanctum .scene-copy.right,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy,
-.scene--manifesto .scene-copy.left,
-.scene--manifesto .scene-copy.right,
-.scene--closing .scene-copy.left,
-.scene--closing .closing-actions{
-  transform:translateY(-50%) !important;
-}
-
-/* Preserve the different horizontal positions from the approved layout. */
-.scene--signal .scene-copy.left{
-  top:42% !important;
-  left:8.35vw !important;
-}
-
-.scene--signal .scene-copy.right{
-  top:64% !important;
-  left:8.35vw !important;
-}
-
-.scene--sanctum .scene-copy.left{
-  top:50% !important;
-  left:8.35vw !important;
-}
-
-.scene--sanctum .scene-copy.right{
-  top:55% !important;
-  right:8.35vw !important;
-  left:auto !important;
-}
-
-.scene--archive .scene-copy.left{
-  top:50% !important;
-  left:8.35vw !important;
-}
-
-.scene--archive .archive-card{
-  top:50% !important;
-  right:8.35vw !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--access .scene-copy{
-  top:50% !important;
-  left:7.8vw !important;
-}
-
-.scene--access .access-grid{
-  top:50% !important;
-  bottom:auto !important;
-  transform:translateY(-50%) !important;
-}
-
-.scene--manifesto .scene-copy.left{
-  top:50% !important;
-  left:8.35vw !important;
-}
-
-.scene--manifesto .scene-copy.right{
-  top:52% !important;
-  left:39% !important;
-}
-
-.scene--closing .scene-copy.left{
-  top:48% !important;
-  bottom:auto !important;
-  left:8.35vw !important;
-}
-
-.scene--closing .closing-actions{
-  top:52% !important;
-  bottom:auto !important;
-  right:8.35vw !important;
-  left:auto !important;
-}
-
-/* Mobile section travel stays moderate too. */
-@media (max-width:900px){
-
-  .scene{
-    min-height:145vh !important;
-  }
-
-  .scene--hero{
-    min-height:138vh !important;
-  }
-
-  .scene--signal{
-    min-height:150vh !important;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene{
-    min-height:148vh !important;
-  }
-
-  .scene--hero{
-    min-height:140vh !important;
-  }
-
-  .scene--signal{
-    min-height:150vh !important;
-  }
-}
-
-/* =========================================================
-   V13 — TEXT-DOMINANT SCROLL RHYTHM
-   More scroll per section; text remains the main visual.
-   Video responsiveness and the approved layout stay intact.
-   ========================================================= */
-
-.scene{
-  min-height:168vh !important;
-}
-
-.scene--hero{
-  min-height:160vh !important;
-}
-
-.scene--signal{
-  min-height:176vh !important;
-}
-
-/* Keep the viewport stage locked while the page travels through
-   the section's longer scroll range. */
-.scene-stage{
-  height:100vh !important;
-  height:100svh !important;
-}
-
-/* The content remains centered during the longer hold. */
-.scene--signal .scene-copy.left,
-.scene--signal .scene-copy.right,
-.scene--sanctum .scene-copy.left,
-.scene--sanctum .scene-copy.right,
-.scene--archive .scene-copy.left,
-.scene--access .scene-copy,
-.scene--manifesto .scene-copy.left,
-.scene--manifesto .scene-copy.right,
-.scene--closing .scene-copy.left,
-.scene--closing .closing-actions{
-  transform:translateY(-50%) !important;
-}
-
-/* Section 02 keeps the two blocks clearly separated. */
-.scene--signal .scene-copy.left{
-  top:42% !important;
-  left:8.35vw !important;
-}
-
-.scene--signal .scene-copy.right{
-  top:64% !important;
-  left:8.35vw !important;
-}
-
-/* Preserve the approved centered compositions for the remaining sections. */
-.scene--sanctum .scene-copy.left{
-  top:50% !important;
-  left:8.35vw !important;
-}
-
-.scene--sanctum .scene-copy.right{
-  top:55% !important;
-  right:8.35vw !important;
-  left:auto !important;
-}
-
-.scene--archive .scene-copy.left{
-  top:50% !important;
-  left:8.35vw !important;
-}
-
-.scene--archive .archive-card{
-  top:50% !important;
-  right:8.35vw !important;
-}
-
-.scene--access .scene-copy{
-  top:50% !important;
-  left:7.8vw !important;
-}
-
-.scene--access .access-grid{
-  top:50% !important;
-  bottom:auto !important;
-}
-
-.scene--manifesto .scene-copy.left{
-  top:50% !important;
-  left:8.35vw !important;
-}
-
-.scene--manifesto .scene-copy.right{
-  top:52% !important;
-  left:39% !important;
-}
-
-.scene--closing .scene-copy.left{
-  top:48% !important;
-  bottom:auto !important;
-  left:8.35vw !important;
-}
-
-.scene--closing .closing-actions{
-  top:52% !important;
-  bottom:auto !important;
-  right:8.35vw !important;
-  left:auto !important;
-}
-
-/* Mobile: still more scroll time per content layer, without returning
-   to the excessively long original 200–250vh sections. */
-@media (max-width:900px){
-
-  .scene{
-    min-height:165vh !important;
-  }
-
-  .scene--hero{
-    min-height:155vh !important;
-  }
-
-  .scene--signal{
-    min-height:170vh !important;
-  }
-
-  .scene--signal .scene-copy.left{
-    top:40% !important;
-  }
-
-  .scene--signal .scene-copy.right{
-    top:66% !important;
-  }
-}
-
-@media (max-width:520px){
-
-  .scene{
-    min-height:168vh !important;
-  }
-
-  .scene--hero{
-    min-height:158vh !important;
-  }
-
-  .scene--signal{
-    min-height:170vh !important;
-  }
-}
-
 </style>
 </head>
 
@@ -4258,16 +2272,12 @@ button{
   <section
     class="scene scene--manifesto"
     id="oracle"
-    data-scene="06"
+    data-scene="07"
   >
 
     <div class="scene-stage">
 
       <div class="scene-copy left">
-
-        <div class="kicker animate-line">
-          06
-        </div>
 
         <h2 class="manifesto-title">
 
@@ -4334,7 +2344,7 @@ button{
   <section
     class="scene scene--closing"
     id="portal"
-    data-scene="07"
+    data-scene="08"
   >
 
     <div class="scene-stage">
@@ -4342,7 +2352,7 @@ button{
       <div class="scene-copy left">
 
         <div class="kicker animate-line">
-          07<br>
+          08<br>
           THE SIGNAL<br>
           IS OPEN
         </div>
@@ -5302,34 +3312,26 @@ button{
     const stagger =
       (Number(
         element.dataset.delay || 0
-      ) * .018)
+      ) * .035)
       +
-      (index % 6) * .012;
+      (index % 6) * .022;
 
-    /*
-      Content arrives quickly, stays visible for several
-      scroll movements, then fades only during the hand-off.
-    */
-    /*
-      Text enters gently, remains clearly readable for several
-      scroll movements, then begins its hand-off late in the
-      section instead of disappearing after one or two scrolls.
-    */
     const enterStart =
-      .005 + stagger;
+      .07 + stagger;
 
     const enterEnd =
-      .11 + stagger;
+      .20 + stagger;
 
     /*
-      Text should dominate the section for most of the scroll.
-      It fades only during the final hand-off to the next scene.
+      The text intentionally holds for most
+      of the section, matching the reference.
     */
+
     const holdEnd =
-      .93;
+      .87;
 
     const exitEnd =
-      .995;
+      .985;
 
     const enterT =
       smoothSegment(
@@ -5364,11 +3366,11 @@ button{
       );
 
     const translate =
-      ((1 - enter) * 16) -
-      (exitT * 4.5);
+      ((1 - enter) * 27) -
+      (exitT * 9);
 
     const blur =
-      (1 - enter) * 4.2;
+      (1 - enter) * 6;
 
     element.style.opacity =
       opacity.toFixed(4);
@@ -5489,7 +3491,7 @@ button{
 
       scrollCurrent +=
         (scrollTarget - scrollCurrent) *
-        (reduceMotion ? .3 : .24);
+        (reduceMotion ? .3 : .105);
 
       if(
         Math.abs(
@@ -5517,7 +3519,7 @@ button{
         if(
           Math.abs(
             desired - lastSeek
-          ) > .03
+          ) > .018
         ){
 
           try{
