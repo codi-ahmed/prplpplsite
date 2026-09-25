@@ -3642,6 +3642,17 @@ button{
   }
 }
 
+/* =========================================================
+   V14 — HERO FIRST FRAME
+   Show the complete hero copy as soon as the preloader ends.
+   ========================================================= */
+
+.scene--hero .animate-line{
+  opacity:1 !important;
+  transform:translate3d(0,0,0) !important;
+  filter:blur(0) !important;
+}
+
 </style>
 </head>
 
@@ -5296,7 +5307,8 @@ button{
   function animateText(
     element,
     progress,
-    index
+    index,
+    isHero
   ){
 
     const stagger =
@@ -5305,6 +5317,18 @@ button{
       ) * .018)
       +
       (index % 6) * .012;
+
+    /*
+      The hero is visible immediately after the preloader.
+      Once the visitor starts scrolling, its normal cinematic
+      hand-off animation takes over.
+    */
+    if(isHero && progress <= .02){
+      element.style.opacity = "1";
+      element.style.transform = "translate3d(0,0,0)";
+      element.style.filter = "blur(0)";
+      return;
+    }
 
     /*
       Content arrives quickly, stays visible for several
@@ -5316,20 +5340,20 @@ button{
       section instead of disappearing after one or two scrolls.
     */
     const enterStart =
-      .005 + stagger;
+      isHero ? .025 + stagger : .005 + stagger;
 
     const enterEnd =
-      .11 + stagger;
+      isHero ? .13 + stagger : .11 + stagger;
 
     /*
       Text should dominate the section for most of the scroll.
       It fades only during the final hand-off to the next scene.
     */
     const holdEnd =
-      .93;
+      isHero ? .94 : .93;
 
     const exitEnd =
-      .995;
+      isHero ? .99 : .995;
 
     const enterT =
       smoothSegment(
@@ -5393,7 +5417,8 @@ button{
           animateText(
             element,
             progress,
-            index
+            index,
+            scene.classList.contains("scene--hero")
           );
 
         }
